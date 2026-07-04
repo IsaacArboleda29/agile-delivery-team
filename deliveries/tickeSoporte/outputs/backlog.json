@@ -1,0 +1,181 @@
+{
+  "epics": [
+    {
+      "id": "E-01",
+      "title": "Aviso automatico al cliente cuando el tecnico se mueve",
+      "value": "El cliente del siguiente trabajo recibe un aviso por WhatsApp con la hora estimada en el momento en que el tecnico termina el trabajo anterior, sin que el tecnico tenga que llamar ni redactar nada. Mueve la metrica de exito del MVP (tasa de trabajos del dia con aviso automatico al cliente, umbral >= 70%).",
+      "priority": 1,
+      "origin": [
+        "mvp:propuesta-valor",
+        "mvp:funcionalidad-2",
+        "mvp:funcionalidad-3",
+        "r:R-01",
+        "r:R-02",
+        "r:R-03",
+        "r:R-07",
+        "r:R-08",
+        "r:R-10",
+        "r:R-12"
+      ]
+    },
+    {
+      "id": "E-02",
+      "title": "El cliente ve el estado de su trabajo sin llamar",
+      "value": "El cliente puede consultar el estado actual de su trabajo (asignado / en camino / en sitio / finalizado) y la hora estimada desde un enlace, sin tener que llamar a la empresa. Reduce las llamadas de seguimiento y permite al cliente planificar su dia.",
+      "priority": 2,
+      "origin": [
+        "mvp:funcionalidad-4",
+        "r:R-04",
+        "r:R-09"
+      ]
+    },
+    {
+      "id": "E-03",
+      "title": "El gerente opera la agenda y el panel compartido",
+      "value": "El gerente (y quien le ayude a contestar mensajes) carga la agenda del dia una sola vez y ve en una sola vista el estado actual de cada trabajo, para no depender del papel, del calendario del telefono ni de que el gerente este disponible para contestar.",
+      "priority": 3,
+      "origin": [
+        "mvp:funcionalidad-1",
+        "mvp:funcionalidad-5",
+        "r:R-05",
+        "r:R-06",
+        "r:R-09"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "US-01",
+      "epic": "E-01",
+      "as_a": "tecnico de campo",
+      "want": "pulsar un unico boton 'voy en camino' al terminar el trabajo anterior",
+      "so_that": "el cliente del siguiente reciba el aviso sin tener yo que llamar ni redactar nada",
+      "acceptance_criteria": [
+        "Dado que estoy en un trabajo y el siguiente esta agendado, cuando pulso 'voy en camino', entonces el sistema registra el evento con la hora actual sin pedirme texto adicional.",
+        "Dado que pulso 'voy en camino', cuando suelto el boton, entonces la confirmacion visual cabe en una sola pantalla sin tecleo adicional (un toque o dos como maximo).",
+        "Dado que estoy con las manos ocupadas, cuando quiero actualizar el estado, entonces no necesito escribir ni desbloquear mas de una pantalla."
+      ],
+      "estimate": 3,
+      "dependencies": [],
+      "open_questions": [],
+      "priority": 1,
+      "origin": [
+        "us:US-01",
+        "r:R-01",
+        "r:R-08",
+        "r:R-10",
+        "pain:cliente-sin-actualizacion",
+        "pain:no-poder-atender-telefono"
+      ]
+    },
+    {
+      "id": "US-02",
+      "epic": "E-01",
+      "as_a": "tecnico de campo",
+      "want": "poder actualizar la hora estimada del siguiente trabajo con un toque cuando me retrase",
+      "so_that": "avisar al cliente sin tener que llamar yo",
+      "acceptance_criteria": [
+        "Dado que estoy en un trabajo y me retraso, cuando pulso 'se demoro, nueva hora', entonces el sistema permite sumar 30/60/90 minutos a la hora estimada sin tipear.",
+        "Dado que actualizo la hora estimada, cuando confirmo, entonces el cambio queda registrado y se propaga al cliente en pocos minutos."
+      ],
+      "estimate": 3,
+      "dependencies": ["US-01"],
+      "open_questions": [],
+      "priority": 2,
+      "origin": [
+        "us:US-02",
+        "r:R-03",
+        "r:R-07",
+        "r:R-12",
+        "pain:incertidumbre-duracion",
+        "pain:retraso-sin-aviso"
+      ]
+    },
+    {
+      "id": "US-03",
+      "epic": "E-01",
+      "as_a": "cliente residencial",
+      "want": "recibir un mensaje automatico cuando el tecnico salga hacia mi casa",
+      "so_that": "saber que el servicio esta en curso y a que hora estimada llega",
+      "acceptance_criteria": [
+        "Dado que tengo un trabajo agendado, cuando el tecnico pulsa 'voy en camino', entonces recibo un mensaje con la hora estimada de llegada por un canal que ya uso (WhatsApp o SMS).",
+        "Dado que recibo el mensaje, cuando lo abro, entonces dice al menos: nombre del tecnico, hora estimada de llegada y nombre del negocio."
+      ],
+      "estimate": 5,
+      "dependencies": ["US-01"],
+      "open_questions": [],
+      "priority": 3,
+      "origin": [
+        "us:US-03",
+        "r:R-02",
+        "r:R-04",
+        "r:R-09",
+        "pain:ventana-tiempo-amplia",
+        "pain:espera-sin-informacion"
+      ]
+    },
+    {
+      "id": "US-04",
+      "epic": "E-02",
+      "as_a": "cliente residencial",
+      "want": "ver el estado actual de mi trabajo (asignado / en camino / en sitio / finalizado) sin tener que llamar a la empresa",
+      "so_that": "poder planificar mi dia",
+      "acceptance_criteria": [
+        "Dado que tengo un trabajo agendado, cuando abro el enlace o la vista de estado, entonces veo el estado actual del tecnico y la hora estimada de llegada.",
+        "Dado que el tecnico actualiza el estado, cuando refresco, entonces el nuevo estado aparece en pocos minutos sin que yo tenga que llamar."
+      ],
+      "estimate": 5,
+      "dependencies": ["US-03"],
+      "open_questions": [],
+      "priority": 4,
+      "origin": [
+        "us:US-04",
+        "r:R-04",
+        "r:R-09",
+        "pain:no-poder-planificar",
+        "pain:ventana-tiempo-amplia"
+      ]
+    },
+    {
+      "id": "US-05",
+      "epic": "E-03",
+      "as_a": "gerente general",
+      "want": "registrar la agenda del dia (orden de trabajos, direccion y hora estimada inicial) desde un solo lugar",
+      "so_that": "no escribir a mano y para que cualquiera que mire vea lo mismo que yo",
+      "acceptance_criteria": [
+        "Dado que es el inicio del dia, cuando cargo los trabajos del dia, entonces quedan en una lista con orden, direccion y hora estimada inicial visible para mi y para quien ayude a contestar.",
+        "Dado que tengo la lista cargada, cuando entro a la herramienta, entonces veo la agenda completa del dia en una sola vista."
+      ],
+      "estimate": 5,
+      "dependencies": [],
+      "open_questions": [],
+      "priority": 5,
+      "origin": [
+        "us:US-05",
+        "r:R-05",
+        "r:R-06",
+        "pain:imposible-coordenar-desde-campo"
+      ]
+    },
+    {
+      "id": "US-06",
+      "epic": "E-03",
+      "as_a": "gerente general",
+      "want": "que quien me ayuda a contestar mensajes vea el estado de cada trabajo del dia",
+      "so_that": "no depender solo de mi para contestar",
+      "acceptance_criteria": [
+        "Dado que hay trabajos cargados en el dia, cuando entro al panel, entonces la lista muestra el estado actual de cada trabajo (asignado, en camino, en sitio, finalizado) y se actualiza cuando el tecnico lo cambia."
+      ],
+      "estimate": 3,
+      "dependencies": ["US-05"],
+      "open_questions": [],
+      "priority": 6,
+      "origin": [
+        "us:US-06",
+        "r:R-06",
+        "r:R-09",
+        "pain:doble-rol-atencion"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "sprint_goal": "Entregar al cliente el aviso automatico de que el tecnico va en camino, con la hora estimada, sin que el tecnico tenga que llamar.",
+  "capacity": 20,
+  "stories": ["US-01", "US-02", "US-03", "US-04"]
+}

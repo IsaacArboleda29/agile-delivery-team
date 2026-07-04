@@ -1,0 +1,107 @@
+{
+  "discovery": "tickeSoporte",
+  "personas": [
+    {
+      "name": "T. (técnico)",
+      "role": "técnico",
+      "primary": true,
+      "source": "tecnico.md",
+      "first_person": true
+    },
+    {
+      "name": "C. (cliente)",
+      "role": "cliente",
+      "primary": true,
+      "source": "cliente.md",
+      "first_person": true
+    },
+    {
+      "name": "G. (gerente general)",
+      "role": "gerente general",
+      "primary": true,
+      "source": "gerente_general.md",
+      "first_person": true
+    }
+  ],
+  "stakeholders": [],
+  "pains": [
+    {
+      "id": "cliente-sin-actualizacion",
+      "source": "tecnico.md",
+      "persona": "T. (técnico)",
+      "description": "El cliente del siguiente trabajo no recibe información mientras el técnico está en el anterior."
+    },
+    {
+      "id": "incertidumbre-duracion",
+      "source": "tecnico.md",
+      "persona": "T. (técnico)",
+      "description": "El técnico no puede estimar de antemano cuánto tardará cada trabajo."
+    },
+    {
+      "id": "retraso-sin-aviso",
+      "source": "tecnico.md",
+      "persona": "T. (técnico)",
+      "description": "El técnico ha llegado tarde a un trabajo y el cliente dejó una reseña negativa aunque el servicio quedó bien."
+    },
+    {
+      "id": "no-poder-atender-telefono",
+      "source": "tecnico.md",
+      "persona": "T. (técnico)",
+      "description": "El técnico no puede estar pendiente del teléfono mientras trabaja, por eso no llama para avisar."
+    },
+    {
+      "id": "ventana-tiempo-amplia",
+      "source": "cliente.md",
+      "persona": "C. (cliente)",
+      "description": "El cliente recibe un rango horario amplio (\"la tarde\") y no sabe a qué hora esperar."
+    },
+    {
+      "id": "espera-sin-informacion",
+      "source": "cliente.md",
+      "persona": "C. (cliente)",
+      "description": "El cliente espera sin información y, cuando llama, el técnico contesta como si lo interrumpiera."
+    },
+    {
+      "id": "no-poder-planificar",
+      "source": "cliente.md",
+      "persona": "C. (cliente)",
+      "description": "El cliente no puede salir ni comprometerse con nada por si el técnico llega en cualquier momento."
+    },
+    {
+      "id": "cambio-proveedor-comunicacion",
+      "source": "cliente.md",
+      "persona": "C. (cliente)",
+      "description": "El cliente ha cambiado de proveedor por falta de comunicación y pagaría un poco más por mejor aviso."
+    },
+    {
+      "id": "cliente-cancela-por-demora",
+      "source": "gerente_general.md",
+      "persona": "G. (gerente general)",
+      "description": "Clientes que esperaban se han ido o han cancelado el trabajo por la demora."
+    },
+    {
+      "id": "perdida-clientes",
+      "source": "gerente_general.md",
+      "persona": "G. (gerente general)",
+      "description": "El negocio pierde clientes por la falta de comunicación de los tiempos."
+    },
+    {
+      "id": "reputacion-danada",
+      "source": "gerente_general.md",
+      "persona": "G. (gerente general)",
+      "description": "Un cliente afectado por una demora de dos horas habló mal del negocio con otras personas."
+    },
+    {
+      "id": "imposible-coordenar-desde-campo",
+      "source": "gerente_general.md",
+      "persona": "G. (gerente general)",
+      "description": "El gerente, mientras está en campo, no puede avisar al siguiente cliente de su retraso."
+    },
+    {
+      "id": "doble-rol-atencion",
+      "source": "gerente_general.md",
+      "persona": "G. (gerente general)",
+      "description": "El gerente cumple doble rol (técnico + administración) y no puede atender el teléfono y el equipo a la vez."
+    }
+  ]
+}

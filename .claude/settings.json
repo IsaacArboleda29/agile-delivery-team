@@ -1,0 +1,16 @@
+{
+  "$comentario": " Configuración del Agile Delivery Team.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/dor-invest-gate.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
